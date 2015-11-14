@@ -31,8 +31,8 @@ call extend(s:outline_info, {
       \
       \ 'rspec_heading_keywords': [
       \   'shared\=_\%(as\|context\|examples\%(_for\)\=\)',
-      \   'describe', 'context', 'before', 'after', 'let!\=',
-      \   'subject\%(\s*\%(do\|{\)\)\@=', 'it\%(_\w\+\|s\)\=', 'specify', 
+      \   'describe', 'feature', 'context', 'background', 'before', 'after', 'let!\=',
+      \   'subject\%(\s*\%(do\|{\)\)\@=', 'it\%(_\w\+\|s\)\=', 'specify',
       \ ],
       \
       \ 'not_match_patterns': [
@@ -44,10 +44,10 @@ call extend(s:outline_info, {
       \     'pattern'  : '/\<shared\=_\%(as\|context\|examples\%(_for\)\=\)\>.*/',
       \     'highlight': unite#sources#outline#get_highlight('rspec_shared_context', 'level_1') },
       \   { 'name'     : 'behavior',
-      \     'pattern'  : '/\<\%(describe\|context\)\>.*/',
+      \     'pattern'  : '/\<\%(describe\|feature\|context\)\>.*/',
       \     'highlight': unite#sources#outline#get_highlight('rspec_behaviour', 'level_1') },
       \   { 'name'     : 'hook',
-      \     'pattern'  : '/\<\%(before\|after\)\>.*/',
+      \     'pattern'  : '/\<\%(background\|before\|after\)\>.*/',
       \     'highlight': unite#sources#outline#get_highlight('rspec_hook', 'level_3') },
       \   { 'name'     : 'let',
       \     'pattern'  : '/\<let!\=\>.*/',
