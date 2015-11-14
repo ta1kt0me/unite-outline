@@ -32,7 +32,7 @@ call extend(s:outline_info, {
       \ 'rspec_heading_keywords': [
       \   'shared\=_\%(as\|context\|examples\%(_for\)\=\)',
       \   'describe', 'feature', 'context', 'background', 'before', 'after', 'let!\=',
-      \   'subject\%(\s*\%(do\|{\)\)\@=', 'it\%(_\w\+\|s\)\=', 'specify',
+      \   'subject\%(\s*\%(do\|{\)\)\@=', 'it\%(_\w\+\|s\)\=', 'specify', 'scenario',
       \ ],
       \
       \ 'not_match_patterns': [
@@ -56,7 +56,7 @@ call extend(s:outline_info, {
       \     'pattern'  : '/\<subject\>.*/',
       \     'highlight': unite#sources#outline#get_highlight('rspec_subject', 'level_2') },
       \   { 'name'     : 'example',
-      \     'pattern'  : '/\<\%(it\%(_\w\+\|s\)\=\|specify\)\>.*/',
+      \     'pattern'  : '/\<\%(it\%(_\w\+\|s\)\=\|specify\|scenario\)\>.*/',
       \     'highlight': unite#sources#outline#get_highlight('rspec_example', 'level_2') },
       \ ],
       \})
@@ -82,7 +82,7 @@ function! s:outline_info.create_heading(which, heading_line, matched_line, conte
     let word = substitute(word, '\s*\%(do\|{\)\%(\s*|[^|]*|\)\=\s*$', '', '')
     "let word = substitute(word, '\%(;\|#{\@!\).*$', '', '')
 
-    if word =~ '^\s*\%(subject\|it\)\s*$'
+    if word =~ '^\s*\%(subject\|it\|scenario\)\s*$'
       let word = self.fold_ruby_block(a:context, h_lnum)
     endif
   endif
